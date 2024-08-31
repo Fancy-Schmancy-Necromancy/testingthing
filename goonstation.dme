@@ -32,6 +32,11 @@ var/datum/preMapLoad/preMapLoad = new
 #endif
 #include "code\__secret_public.dme"
 
+// Local development file handling
+#if fexists("code/WorkInProgress/__development.local.dm") && !defined(DISABLE_DEVFILE)
+#include "code\WorkInProgress\__development.local.dm"
+#endif
+
 // BEGIN_INCLUDE
 #include "code\area.dm"
 #include "code\atom.dm"
@@ -191,6 +196,7 @@ var/datum/preMapLoad/preMapLoad = new
 #include "code\datums\components\_loctargeting.dm"
 #include "code\datums\components\_wearertargeting.dm"
 #include "code\datums\components\afterimage.dm"
+#include "code\datums\components\afterimage_image_based.dm"
 #include "code\datums\components\alpha_clothing.dm"
 #include "code\datums\components\analyzable.dm"
 #include "code\datums\components\angle_watcher.dm"
@@ -209,6 +215,7 @@ var/datum/preMapLoad/preMapLoad = new
 #include "code\datums\components\contraband.dm"
 #include "code\datums\components\controlled_by_mob.dm"
 #include "code\datums\components\conveyor_lay.dm"
+#include "code\datums\components\cord.dm"
 #include "code\datums\components\crayonwalk.dm"
 #include "code\datums\components\death_confetti.dm"
 #include "code\datums\components\disposing_confetti.dm"
@@ -555,6 +562,7 @@ var/datum/preMapLoad/preMapLoad = new
 #include "code\mob\living\intangible\blob_overmind\ai.dm"
 #include "code\mob\living\intangible\flock\flockmind.dm"
 #include "code\mob\living\intangible\flock\flocktrace.dm"
+#include "code\mob\living\intangible\wraith\poltergeist.dm"
 #include "code\mob\living\life\blindness.dm"
 #include "code\mob\living\life\blood.dm"
 #include "code\mob\living\life\bodytemp.dm"
@@ -587,7 +595,6 @@ var/datum/preMapLoad/preMapLoad = new
 #include "code\mob\living\silicon\hivebot\hive_modules.dm"
 #include "code\mob\living\silicon\hivebot\hivebot_statusupdate.dm"
 #include "code\mob\living\silicon\hivebot\mainframe.dm"
-#include "code\mob\wraith\poltergeist.dm"
 #include "code\modules\admin\abilitymanager.dm"
 #include "code\modules\admin\admin.dm"
 #include "code\modules\admin\admin_holder.dm"
@@ -1412,8 +1419,10 @@ var/datum/preMapLoad/preMapLoad = new
 #include "code\modules\mapping\_helper_parent.dm"
 #include "code\modules\mapping\helpers\access_spawn.dm"
 #include "code\modules\mapping\helpers\airlock_helpers.dm"
+#include "code\modules\mapping\helpers\button_helpers.dm"
 #include "code\modules\mapping\helpers\firedoor_spawn.dm"
 #include "code\modules\mapping\helpers\mob_spawn.dm"
+#include "code\modules\mapping\helpers\plant_spawn.dm"
 #include "code\modules\mapping\helpers\turf_helpers.dm"
 #include "code\modules\mapping\helpers\wingrille_spawner.dm"
 #include "code\modules\materials\Mat_FabParts.dm"
@@ -1791,6 +1800,7 @@ var/datum/preMapLoad/preMapLoad = new
 #include "code\obj\effect.dm"
 #include "code\obj\effects.dm"
 #include "code\obj\electric_chair.dm"
+#include "code\obj\fakedoor.dm"
 #include "code\obj\fakeobject.dm"
 #include "code\obj\false_wall.dm"
 #include "code\obj\foamedmetal.dm"
